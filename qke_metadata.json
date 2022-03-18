@@ -1,0 +1,37 @@
+{
+  "name": "quantum_kernel_estimation",
+  "description": "A program to do classification via SVC using a quantum kernel.",
+  "max_execution_time" : 300,
+  "spec": {
+    "backend_requirements": {
+      "min_num_qubits": 5
+    },
+    "parameters": {
+      "properties": {
+        "X_tr": {
+          "type": "numpy array",
+          "description": "Input training data"
+        },
+        "Y_tr": {
+          "type": "numpy array",
+          "description": "Target training data"
+        },
+        "X_va": {
+          "type": "numpy array",
+          "description": "Input validation data"
+        },
+        "Y_va": {
+          "type": "numpy array",
+          "description": "Target validation data"
+        }
+      },
+      "required": [
+        "X_tr", "Y_tr", "X_va", "Y_va"
+      ]
+    },
+    "return_values": {
+      "description": "The accuracy score on the validation data.",
+      "type": "float"
+    }
+  }
+}
