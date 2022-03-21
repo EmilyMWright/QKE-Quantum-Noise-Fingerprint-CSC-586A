@@ -1,7 +1,7 @@
 {
   "name": "quantum_kernel_estimation",
   "description": "A program to do classification via SVC using a quantum kernel.",
-  "max_execution_time" : 300,
+  "max_execution_time" : 7200,
   "spec": {
     "backend_requirements": {
       "min_num_qubits": 5

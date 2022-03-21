@@ -17,10 +17,11 @@ def program(backend: ProgramBackend, user_messenger: UserMessenger, **kwargs):
     """Function that does SVC using a quantum kernel."""
     
     # get data
-    X_tr = kwargs.pop('X_tr', [])
-    Y_tr = kwargs.pop('Y_tr', [])
-    X_va = kwargs.pop('X_va', [])
-    Y_va = kwargs.pop('Y_va', [])
+    z_kernel = kwargs.pop('kz_kernel', [])
+    X_tr = kwargs.pop('kX_tr', [])
+    Y_tr = kwargs.pop('kY_tr', [])
+    X_va = kwargs.pop('kX_va', [])
+    Y_va = kwargs.pop('kY_va', [])
     
     # do SVC
     q_model = SVC(kernel=z_kernel.evaluate)
@@ -63,7 +64,7 @@ def main(backend: ProgramBackend, user_messenger: UserMessenger, **kwargs):
     Y_va = kwargs.pop('Y_va', [])
     
     # get score
-    result = program(backend, user_messenger, z_kernel, X_tr, Y_tr, X_va, Y_va)
+    result = program(backend, user_messenger, kz_kernel=z_kernel, kX_tr=X_tr, kY_tr=Y_tr, kX_va=X_va, kY_va=Y_va)
     
     return result
 
