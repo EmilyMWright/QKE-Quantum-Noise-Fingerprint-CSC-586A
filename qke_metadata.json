@@ -9,19 +9,19 @@
     "parameters": {
       "properties": {
         "X_tr": {
-          "type": "numpy array",
+          "type": "list",
           "description": "Input training data"
         },
         "Y_tr": {
-          "type": "numpy array",
+          "type": "list",
           "description": "Target training data"
         },
         "X_va": {
-          "type": "numpy array",
+          "type": "list",
           "description": "Input validation data"
         },
         "Y_va": {
-          "type": "numpy array",
+          "type": "list",
           "description": "Target validation data"
         }
       },
@@ -30,7 +30,7 @@
       ]
     },
     "return_values": {
-      "description": "The accuracy score on the validation data.",
+      "description": "The model accuracy score on the validation data.",
       "type": "float"
     }
   }

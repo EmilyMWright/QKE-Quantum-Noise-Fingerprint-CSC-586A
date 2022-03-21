@@ -14,8 +14,20 @@ from qiskit.providers.ibmq.runtime import UserMessenger, ProgramBackend
 
 
 def program(backend: ProgramBackend, user_messenger: UserMessenger, **kwargs):
-    """Function that does SVC using a quantum kernel."""
+    """Function that does SVC using a quantum kernel.
     
+    Args:
+        backend: Backend for the circuits to run on.
+        user_messenger: Used to communicate with the program user.
+        kwargs: User inputs.
+                kz_kernel: Quantum kernel
+                kX_tr: List of input training data
+                kY_tr: List of target training data
+                kX_va: List of input validation data
+                kY_va: List of target validation data
+                
+    Returns: Model accuracy score on validation data
+    """  
     # get data
     z_kernel = kwargs.pop('kz_kernel', [])
     X_tr = kwargs.pop('kX_tr', [])
@@ -32,15 +44,18 @@ def program(backend: ProgramBackend, user_messenger: UserMessenger, **kwargs):
 
 
 def main(backend: ProgramBackend, user_messenger: UserMessenger, **kwargs):
-    """This is the main entry point of a runtime program.
-
-    The name of this method must not change. It also must have ``backend``
-    and ``user_messenger`` as the first two positional arguments.
+    """Main entry point of runtime program.
 
     Args:
         backend: Backend for the circuits to run on.
         user_messenger: Used to communicate with the program user.
         kwargs: User inputs.
+                X_tr: List of input training data
+                Y_tr: List of target training data
+                X_va: List of input validation data
+                Y_va: List of target validation data
+                
+    Returns: Result from calling Program
     """
     # set seed
     SEED = 102855
@@ -64,7 +79,8 @@ def main(backend: ProgramBackend, user_messenger: UserMessenger, **kwargs):
     Y_va = kwargs.pop('Y_va', [])
     
     # get score
-    result = program(backend, user_messenger, kz_kernel=z_kernel, kX_tr=X_tr, kY_tr=Y_tr, kX_va=X_va, kY_va=Y_va)
+    result = program(backend, user_messenger, kz_kernel=z_kernel, 
+                     kX_tr=X_tr, kY_tr=Y_tr, kX_va=X_va, kY_va=Y_va)
     
     return result
 
